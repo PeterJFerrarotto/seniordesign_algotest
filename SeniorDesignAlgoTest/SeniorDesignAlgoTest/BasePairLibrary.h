@@ -1,5 +1,6 @@
 #include <bitset>
 #include <map>
+#include <vector>
 #ifndef _BASEPAIRLIBRARY_H
 #define _BASEPAIRLIBRARY_H
 
@@ -56,6 +57,7 @@ namespace SeniorDesign
 		static BasePair B;
 		static BasePair N;
 
+		static const std::map<char, BasePair> BasePairMap;
 		static const std::map<BasePair, char> BinaryMap;
 
 		static const std::map<BasePair, BasePair> Compliments;
@@ -63,13 +65,18 @@ namespace SeniorDesign
 		static std::bitset<4>& reverseOrder(const std::bitset<4>& bits);
 		
 	public:
+		static std::vector<char> validBPChars;
 		static char TranslateBinary(const BasePair& BasePair);
+
+		static BasePair TranslateBasePair(const char BasePair);
 
 		static BasePair& GetCompliment(const BasePair& BasePair);
 
 		static BasePair& GetRNACompliment(const BasePair& BasePair);
 
 		static bool MatchBasePair(const BasePair& bp1, const BasePair& bp2);
+
+		static bool ValidBasePair(char bp);
 	};
 }
 #endif

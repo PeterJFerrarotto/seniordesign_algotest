@@ -21,9 +21,15 @@
     <ClCompile Include="BasePairLibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DNASequence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasePairLibrary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DNASequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

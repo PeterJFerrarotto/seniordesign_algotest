@@ -98,9 +98,16 @@ namespace SeniorDesign
 
 	const map<BasePair, char> BasePairLibrary::BinaryMap{ {U, 'U'}, {A, 'A'}, {C, 'C'}, {G, 'G'}, {T, 'T'}, {M, 'M'}, {R, 'R'}, {W, 'W'}, {S, 'S'}, { Y, 'Y' }, { K, 'K' }, { V, 'V' }, { H, 'H' }, { D, 'D' }, { B, 'B' }, { N, 'N' } };
 
+	const map<char, BasePair> BasePairLibrary::BasePairMap{ {'U', U}, {'A', A}, {'C', C}, {'G', G}, {'T', T}, {'M', M}, {'R', R}, {'W', W}, {'S', S}, {'Y', Y}, {'K', K}, {'V', V}, {'H', H}, {'D', D}, {'B', B}, {'N', N}, {'X', N} };
+
 	char BasePairLibrary::TranslateBinary(const BasePair& BasePair)
 	{
 		return BinaryMap.at(BasePair);
+	}
+
+	BasePair BasePairLibrary::TranslateBasePair(const char BasePair) 
+	{
+		return BasePairMap.at(BasePair);
 	}
 
 	bitset<4>& BasePairLibrary::reverseOrder(const std::bitset<4>& bits)
@@ -170,4 +177,10 @@ namespace SeniorDesign
 		return ((bp1.test(0) && bp2.test(0)) || (bp1.test(1) && bp2.test(1)) || (bp1.test(2) && bp2.test(2)) || (bp1.test(3) && bp2.test(3)));
 	}
 
+	vector<char> BasePairLibrary::validBPChars{ 'U', 'A', 'C', 'G', 'T', 'M', 'R', 'W', 'S', 'Y', 'K', 'V', 'H', 'D', 'B', 'N', 'X' };
+
+	bool BasePairLibrary::ValidBasePair(char bp) 
+	{
+		return bp == 'U' || bp ==  'A' || bp == 'C' || bp == 'G' || bp == 'T' || bp == 'M' || bp == 'R' || bp == 'W' || bp == 'S' || bp == 'Y' || bp == 'K' || bp == 'V' || bp == 'H' || bp == 'D' || bp == 'B' || bp == 'N' || bp == 'X';
+	}
 }
