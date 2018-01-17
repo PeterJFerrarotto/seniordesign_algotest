@@ -3,20 +3,73 @@
 #ifndef _BASEPAIRLIBRARY_H
 #define _BASEPAIRLIBRARY_H
 
-static class BasePairLibrary
-{
-public:
-	static const std::bitset<4> Uracil;
-	static const std::bitset<4> Adenine;
-	static const std::bitset<4> Cytosine;
-	static const std::bitset<4> Guanine;
-	static const std::bitset<4> Thymine;
-	static const std::map<char, std::bitset<4>> BasePairMap;
-	static const std::map<std::bitset<4>, char> BinaryMap;
+namespace SeniorDesign 
+{	
+	class BasePair 
+	{
+	private:
+		std::bitset<4> bRep;
+	public:
 
-	static const std::bitset<4> TranslateBasePair(char BasePair);
+		bool test(size_t pos) const;
 
-	static const char TranslateBinary(std::bitset<4> BasePair);
-};
+		std::bitset<4> getBitRep() const;
 
+		void setBitPos(size_t pos, bool val);
+
+		bool operator== (const BasePair& rhs) const;
+		bool operator!= (const BasePair& rhs) const;
+
+		bool operator< (const BasePair& rhs) const;
+		bool operator> (const BasePair& rhs) const;
+		bool operator>= (const BasePair& rhs) const;
+		bool operator<= (const BasePair& rhs) const;
+
+		bool operator== (const std::bitset<4>& rhs) const;
+		bool operator!= (const std::bitset<4>& rhs) const;
+
+		BasePair& operator = (const BasePair& rhs);
+		BasePair& operator = (const std::bitset<4>& rhs);
+		friend std::ostream& operator<< (std::ostream& os, const BasePair& BP);
+		BasePair();
+		BasePair(std::bitset<4>);
+		BasePair(const BasePair& copy);
+	};
+
+	static class BasePairLibrary
+	{
+	private:
+		static BasePair U;
+		static BasePair A;
+		static BasePair C;
+		static BasePair G;
+		static BasePair T;
+		static BasePair M;
+		static BasePair R;
+		static BasePair W;
+		static BasePair S;
+		static BasePair Y;
+		static BasePair K;
+		static BasePair V;
+		static BasePair H;
+		static BasePair D;
+		static BasePair B;
+		static BasePair N;
+
+		static const std::map<BasePair, char> BinaryMap;
+
+		static const std::map<BasePair, BasePair> Compliments;
+
+		static std::bitset<4>& reverseOrder(const std::bitset<4>& bits);
+		
+	public:
+		static char TranslateBinary(const BasePair& BasePair);
+
+		static BasePair& GetCompliment(const BasePair& BasePair);
+
+		static BasePair& GetRNACompliment(const BasePair& BasePair);
+
+		static bool MatchBasePair(const BasePair& bp1, const BasePair& bp2);
+	};
+}
 #endif
